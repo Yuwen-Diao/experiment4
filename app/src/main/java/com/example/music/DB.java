@@ -14,7 +14,7 @@ public class DB extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String sql = "create table music(id integer primary key AUTOINCREMENT,link text,uri text)";
         db.execSQL(sql);
-    }
+    }//link链接,uri本地名
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

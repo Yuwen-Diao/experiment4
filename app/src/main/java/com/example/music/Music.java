@@ -44,7 +44,7 @@ public class Music extends AppCompatActivity implements SeekBar.OnSeekBarChangeL
     public void init(){
         helper=new DB(this);
         db=helper.getReadableDatabase();
-        //
+        //初始化
         Bundle bundle=this.getIntent().getExtras();
         position=bundle.getInt("id");
         //
@@ -55,7 +55,7 @@ public class Music extends AppCompatActivity implements SeekBar.OnSeekBarChangeL
         //
         seekBar = findViewById(R.id.seekBar);
         //
-        player=new MediaPlayer();
+        player=new MediaPlayer();//MediaPlayer已内置音乐播放管理办法
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,7 +66,7 @@ public class Music extends AppCompatActivity implements SeekBar.OnSeekBarChangeL
         cursor.moveToPosition(position);
         musicPath= Environment.getExternalStorageDirectory().getAbsolutePath() + "/Download/"+viewName.getText().toString()+".mp3";
         try {
-            player.setDataSource(musicPath);
+            player.setDataSource(musicPath);//载入
             player.prepare();    //准备
             player.start();  //播放
             seekBar.setMax(player.getDuration());//设置SeekBar的长度

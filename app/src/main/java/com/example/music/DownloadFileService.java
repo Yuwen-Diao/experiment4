@@ -60,9 +60,9 @@ public class DownloadFileService extends IntentService {
         InputStream ips = null;
         try {
             URL url = new URL(downloadUrl);
-            HttpURLConnection huc = (HttpURLConnection) url.openConnection();
-            huc.setRequestMethod("GET");
-            huc.setReadTimeout(10000);
+            HttpURLConnection huc = (HttpURLConnection) url.openConnection();//打开http的链接，创建连接对象
+            huc.setRequestMethod("GET");//http传输办法get
+            huc.setReadTimeout(10000);//设置超时时间，超过则视为下载失败
             huc.setConnectTimeout(3000);
             fileLength = Integer.valueOf(huc.getHeaderField("Content-Length"));
             ips = huc.getInputStream();

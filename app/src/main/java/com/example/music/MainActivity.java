@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         bundle.putString("name", uri);
         downloadIntent.putExtras(bundle);
         startService(downloadIntent);
-        // 设置广播接收器，当新版本的apk下载完成后自动弹出安装界面
+        // 设置广播接收器，当新一首音乐下载完成后自动弹出完成提示
         IntentFilter intentFilter = new IntentFilter("com.test.downloadComplete");
         receiver = new BroadcastReceiver() {
             public void onReceive(Context context, Intent intent) {
@@ -125,7 +125,8 @@ public class MainActivity extends AppCompatActivity {
         insert("http://10.0.2.2:8765/LoboLoco-PostmanJack.mp3","music3");
         insert("http://10.0.2.2:8765/TeaKPea-fallintoyou.mp3","music4");
         insert("http://10.0.2.2:8765/thetunefulquire-lydianlillies.mp3","music5");
-    }
+    }//添加数据库记录
+
     public void selectDb() {
         cursor = db.query("music", null, null, null, null, null, null);
         mAdapter = new MyAdapter(this, cursor);
@@ -135,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         selectDb();
-    }
+    }//每执行任意一次操作后刷新
 
 
 }
